@@ -13,8 +13,6 @@ from data_parse import parse_kong_data
 import requests
 import time
 import pandas as pd
-import os
-
 
 csv_data_file = "kongs_data.csv"
 
@@ -25,8 +23,8 @@ while True:
     start_time = time.time()
     df = pd.DataFrame()
     url = "https://api.opensea.io/api/v1/assets"
-    bool = True
-    for i in range(0, 10):
+
+    for i in range(0, 334):
         querystring = {"token_ids": list(range((i * 30), (i * 30) + 30)),
                        "asset_contract_address": "0xef0182dc0574cd5874494a120750fd222fdb909a",
                        "order_direction": "desc",

@@ -1,6 +1,8 @@
 '''****************************************************************************
 title           : main_mongodb.py
-description     : main file for kong_data_miner project
+description     : main file for kong_data_miner project. Updates MongoDB 
+                | database. Only parses and updates sale data but can be
+                | configured to do more.
 author          : Adil Moujahid
 modified_by     : TheBigMort
 date_created    : 20210627
@@ -15,15 +17,11 @@ import time
 
 from pymongo import MongoClient
 
-import matplotlib.pyplot as plt
-
-plt.style.use('ggplot')
-
 # Infinite loop to constantly run and update database
 while True:
     # track time to check how long the program takes to run
     start_time = time.time()
-    client = MongoClient()
+    client = MongoClient({MONGODB_CONNECTION_STRING})
     dbs = client.salesDB
     # these three lines ensure the collection is cleared to prevent duplicate entries
     kongs_sales = dbs.kongsSales
