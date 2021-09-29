@@ -23,7 +23,7 @@ plt.style.use('ggplot')
 while True:
     # track time to check how long the program takes to run
     start_time = time.time()
-    client = MongoClient({MongoDB_DB_Connection_String})
+    client = MongoClient()
     dbs = client.salesDB
     # these three lines ensure the collection is cleared to prevent duplicate entries
     kongs_sales = dbs.kongsSales
@@ -32,7 +32,7 @@ while True:
 
     url = "https://api.opensea.io/api/v1/assets"
 
-    for i in range(0, 334):
+    for i in range(0, 3):
         querystring = {"token_ids": list(range((i * 30), (i * 30) + 30)),
                        "asset_contract_address": "0xef0182dc0574cd5874494a120750fd222fdb909a",
                        "order_direction": "desc",
@@ -55,6 +55,7 @@ while True:
         #kongs_collection.insert_many(parsed_kongs)
         kongs_sales.insert_many(parsed_sales)
 
+    print(kongs_sales)
     end_time = time.time()
     time_elapsed = end_time - start_time
     print(time_elapsed)

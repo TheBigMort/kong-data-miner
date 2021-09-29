@@ -9,7 +9,7 @@ version         : 2.0
 python_version  : 3.9
 ****************************************************************************'''
 
-from data_parse import parse_sale_data, parse_kong_data
+from data_parse import parse_kong_data
 import requests
 import time
 import pandas as pd
@@ -23,10 +23,10 @@ while True:
 
     # track time to check how long the program takes to run
     start_time = time.time()
-
+    df = pd.DataFrame()
     url = "https://api.opensea.io/api/v1/assets"
-
-    for i in range(0, 5):
+    bool = True
+    for i in range(0, 10):
         querystring = {"token_ids": list(range((i * 30), (i * 30) + 30)),
                        "asset_contract_address": "0xef0182dc0574cd5874494a120750fd222fdb909a",
                        "order_direction": "desc",
@@ -44,9 +44,10 @@ while True:
         kongs = response.json()['assets']
         # Parse kongs data
         parsed_kongs = [parse_kong_data(kong) for kong in kongs]
+        # insert data into kong_data
+        df = df.append(parsed_kongs, ignore_index=True)
 
     # create csv file with kongs data
-    df = pd.DataFrame(parsed_kongs)
     df.to_csv(csv_data_file, header=True)
 
     # calculate and print total program run time 

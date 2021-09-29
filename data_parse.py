@@ -8,8 +8,6 @@ version         : 2.0
 python_version  : 3.9
 ****************************************************************************'''
 
-global shooting_stat, defense_stat, vision_stat, finish_stat
-
 def parse_kong_data(kong_dict):
 
     stat = []
@@ -21,7 +19,7 @@ def parse_kong_data(kong_dict):
     rarity_url = 'https://rarity.tools/rumble-kong-league/view/{}'.format(kong_id)
 
 
-    def constructor(stat):
+    def find_elem(stat):
         try:
             for s in range(len(traits)):
                 if traits[s]["trait_type"] == stat:
@@ -51,11 +49,15 @@ def parse_kong_data(kong_dict):
         list_date = list_date.replace('T', ' ')
     except:
         list_date = ' '
-    shooting_stat = constructor('Shooting')
-    finish_stat = constructor('Finish')
-    defense_stat = constructor('Defense')
-    vision_stat = constructor('Vision')
+
+
+    shooting_stat = find_elem('Shooting')
+    finish_stat = find_elem('Finish')
+    defense_stat = find_elem('Defense')
+    vision_stat = find_elem('Vision')
+
     cumulative_stat = shooting_stat+finish_stat+defense_stat+vision_stat
+
     result = {'rarity_url': rarity_url,
               'kong_id': kong_id,
               'owner_address': owner_address,
@@ -64,18 +66,18 @@ def parse_kong_data(kong_dict):
               'last_sale_price': last_sale_price,
               'list_date': list_date[:19],
               'list_price': current_price_eth,
-              'background': constructor('Background'),
-              'fur': constructor('Fur'),
-              'clothes': constructor('Clothes'),
-              'mouth': constructor('Mouth'),
-              'head': constructor('Head'),
-              'head_accessory': constructor('Head Accessory'),
-              'eyes': constructor('Eyes'),
-              'jewellery': constructor('Jewellery'),
-              'shooting': constructor('Shooting'),
-              'finish': constructor('Finish'),
-              'defense': constructor('Defense'),
-              'vision': constructor('Vision'),
+              'background': find_elem('Background'),
+              'fur': find_elem('Fur'),
+              'clothes': find_elem('Clothes'),
+              'mouth': find_elem('Mouth'),
+              'head': find_elem('Head'),
+              'head_accessory': find_elem('Head Accessory'),
+              'eyes': find_elem('Eyes'),
+              'jewellery': find_elem('Jewellery'),
+              'shooting': shooting_stat,
+              'finish': finish_stat,
+              'defense': defense_stat,
+              'vision': vision_stat,
               'cumulative': cumulative_stat}
     return result
 
