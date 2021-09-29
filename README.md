@@ -1,4 +1,4 @@
-# kong_data_miner
+# kong-data-miner
 Mines data for Rumble Kong League NFTs. The code in the main.py file 
 was written by Adil Moujahid and modified by me, TheBigMort.
 
