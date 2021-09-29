@@ -1,4 +1,4 @@
-'''
+'''****************************************************************************
 title           : main_mongodb.py
 description     : main file for kong_data_miner project
 author          : Adil Moujahid
@@ -7,7 +7,7 @@ date_created    : 20210627
 date_modified   : 20210929
 version         : 2.0
 python_version  : 3.9
-'''
+****************************************************************************'''
 
 from data_parse import parse_sale_data
 import requests

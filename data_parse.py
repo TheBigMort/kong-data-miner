@@ -1,4 +1,4 @@
-'''
+'''****************************************************************************
 title           : data_parse.py
 description     : Kong data from the OpenSea API is parsed with this program
 author          : TheBigMort
@@ -6,7 +6,7 @@ date_created    : 20210627
 date_modified   : 20210929
 version         : 2.0
 python_version  : 3.9
-'''
+****************************************************************************'''
 
 global shooting_stat, defense_stat, vision_stat, finish_stat
 
