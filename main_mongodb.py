@@ -14,7 +14,6 @@ python_version  : 3.9
 from data_parse import parse_sale_data
 import requests
 import time
-
 from pymongo import MongoClient
 
 # Infinite loop to constantly run and update database
@@ -30,7 +29,7 @@ while True:
 
     url = "https://api.opensea.io/api/v1/assets"
 
-    for i in range(0, 3):
+    for i in range(0, 334):
         querystring = {"token_ids": list(range((i * 30), (i * 30) + 30)),
                        "asset_contract_address": "0xef0182dc0574cd5874494a120750fd222fdb909a",
                        "order_direction": "desc",
