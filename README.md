@@ -1,4 +1,5 @@
-This is my first CS project and what ultimately led me to become a software developer because i loved making it. The code will remain as it is, unchanged. It is deprecated now, as OpenSea's API requires an API key. To mine NFT metadata without an OS API key, please see:  rux-eth/next-boiler.
+This is my first CS project and what ultimately led me to become a software developer because i loved making it. The code will remain as it is, unchanged. It is deprecated now, as OpenSea's API requires an API key.
+To mine NFT metadata without an OS API key, please see:  rux-eth/next-boiler.
 
 # kong-data-miner
 Mines data for Rumble Kong League NFTs. The code in the main.py file 
